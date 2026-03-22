@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Session | NextBridge Academy</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar scrolled" style="box-shadow: none;">
+        <div class="logo" onclick="window.location.href='index.html'">
+            <i class="fa-solid fa-gem"></i> NextBridge<span>Academy</span>
+        </div>
+        <a href="index.html" class="btn btn-secondary nav-btn" style="margin-left:auto;">Back to Home</a>
+    </nav>
+
+    <div class="booking-container">
+        <div class="booking-content glass-panel reveal active">
+            <h2>Book Your <span class="highlight">Session</span></h2>
+            <p>Take the first step towards your global career. Fill out the details below and our counselors will assist
+                you.</p>
+
+            <form action="https://formsubmit.co/nextbridgeacademy1@gmail.com" method="POST" target="_blank"
+                id="booking-form" class="booking-form">
+                <!-- Native FormSubmit action opens in new tab for reliable activation/delivery -->
+                <input type="hidden" name="_subject" value="New Consultation Booking from NextBridge Academy!">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="tel" name="phone" required placeholder="+91 9876543210">
+                </div>
+
+                <div class="form-group">
+                    <label>Gmail / Email ID</label>
+                    <input type="email" name="email" required placeholder="name@gmail.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Program Interest</label>
+                    <select name="program" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="UG (Undergraduate)">UG (Undergraduate)</option>
+                        <option value="PG (Postgraduate)">PG (Postgraduate)</option>
+                        <option value="PhD">PhD</option>
+                        <option value="Career Guidance">Career Guidance</option>
+                        <option value="IELTS Coaching">IELTS Exam Coaching</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Destination Preference</label>
+                    <select name="destination" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="Foreign Studies">Foreign Studies</option>
+                        <option value="Indian Universities">Indian Universities</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Time to Reach You</label>
+                    <input type="time" name="time" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary submit-btn">Submit Request</button>
+            </form>
+
+            <div id="form-feedback" style="display:none; text-align:center; padding:2rem 0;">
+                <i class="fa-solid fa-circle-check" style="color: #10b981; font-size: 3.5rem; margin-bottom: 1rem;"></i>
+                <h3 style="font-size: 1.8rem; margin-bottom:0.5rem; color: white;">Successfully Submitted!</h3>
+                <p>Your details have been securely emailed. Connect immediately with our counselors on WhatsApp to
+                    jumpstart the process!</p>
+
+                <div
+                    style="display:flex; gap:1rem; flex-wrap: wrap; justify-content:center; margin-bottom: 2rem; margin-top: 1.5rem;">
+                    <a id="wa-link-1" href="#" target="_blank" class="btn btn-primary"
+                        style="background: #25D366; border:none; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);"><i
+                            class="fa-brands fa-whatsapp"></i> Chat with Counselor 1</a>
+                    <a id="wa-link-2" href="#" target="_blank" class="btn btn-primary"
+                        style="background: #25D366; border:none; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);"><i
+                            class="fa-brands fa-whatsapp"></i> Chat with Counselor 2</a>
+                </div>
+                <a href="index.html" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function (e) {
+            const form = this;
+            const formData = new FormData(form);
+
+            // Construct WhatsApp message text
+            let text = `*New Booking Request!*%0A%0A`;
+            text += `*Name:* ${formData.get('name')}%0A`;
+            text += `*Email:* ${formData.get('email')}%0A`;
+            text += `*Mobile:* ${formData.get('phone')}%0A`;
+            text += `*Program:* ${formData.get('program')}%0A`;
+            text += `*Destination:* ${formData.get('destination')}%0A`;
+            text += `*Preferred Time:* ${formData.get('time')}%0A`;
+
+            // Set WhatsApp links dynamically for the success interface
+            document.getElementById('wa-link-1').href = `https://wa.me/919843627245?text=${text}`;
+            document.getElementById('wa-link-2').href = `https://wa.me/917397649955?text=${text}`;
+
+            // Because target="_blank" is on the form, HTML natively opens the FormSubmit processing tab.
+            // We just update the local UI to show success so they can access the WhatsApp buttons!
+            setTimeout(() => {
+                form.style.display = 'none';
+                document.getElementById('form-feedback').style.display = 'block';
+            }, 800);
+        });
+    </script>
+</body>
+
+</html>
