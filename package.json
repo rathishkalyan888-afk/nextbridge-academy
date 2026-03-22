@@ -1,0 +1,22 @@
+{
+  "name": "nextbridge-academy",
+  "version": "1.0.0",
+  "description": "NextBridge Academy Consultancy Website with Advanced Cloud AI Chatbot",
+  "main": "script.js",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server ."
+  },
+  "keywords": [
+    "study-abroad",
+    "consultancy",
+    "ai-chatbot",
+    "nextbridge"
+  ],
+  "author": "NextBridge Academy",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  }
+}
